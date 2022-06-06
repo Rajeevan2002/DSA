@@ -1,0 +1,47 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int find(TreeNode *root,int hx,int& px,int x)
+    {
+        if(!root)
+            return 0;
+        
+        if(root->val==x)
+            return hx;
+        
+        px=root->val;
+        int left=find(root->left,hx+1,px,x);
+        if(left)
+            return left;
+        px=root->val;
+        int right=find(root->right,hx+1,px,x);
+        
+            return right;
+        
+    }
+    bool isCousins(TreeNode* root, int x, int y) 
+    {
+        int px=-1;
+        int hx=find(root,0,px,x);
+        
+        int py=-1;
+        int hy=find(root,0,py,y);
+        
+        
+        if(hx!=hy || px==py)
+            return false;
+        
+        return true;
+        
+    }
+};
