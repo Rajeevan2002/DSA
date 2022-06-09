@@ -4,8 +4,8 @@ void inorder(TreeNode* root,TreeNode* &prev)
 		return NULL;
 	inorder(root->left,prev);
 	prev->left=NULL;
-	prev->right=curr;
-	prev=curr;
+	prev->right=root;
+	prev=root;
 	inorder(root->right,prev);
 }
 
