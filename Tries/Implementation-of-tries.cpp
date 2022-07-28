@@ -5,7 +5,7 @@ struct Node
     
     bool containsKey(char ch)
     {
-        return links[ch-'a'];
+        return links[ch-'a']!=NULL;
     }
     
     void put(char ch,Node* node)
